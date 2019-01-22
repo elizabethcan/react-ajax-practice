@@ -1,11 +1,12 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-class FormField extends React.Component {
+class FormFields extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      name: '',
+      message: ''
     }
   }
 
@@ -14,7 +15,7 @@ class FormField extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    console.log('submit clicked');
     event.preventDefault();
   }
 
@@ -23,7 +24,11 @@ class FormField extends React.Component {
       <form onSubmit={this.handleSubmit.bind(this)}>
         <label>
           Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
+          <input type="text" name={this.state.name} onChange={this.handleChange.bind(this)} />
+        </label>
+        <label>
+          Message:
+          <input type="text" message={this.state.message} onChange={this.handleChange.bind(this)} />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -35,7 +40,7 @@ var App = () => (
   <div>
     <h2>Please Input Name and Message</h2>
       <div>
-        <FormField />
+        <FormFields />
       </div>
   </div>
 );
